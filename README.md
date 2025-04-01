@@ -20,7 +20,7 @@ Durante mi formación, identifiqué la necesidad de una herramienta que:
 ### - Roles:
   - Administrador: Gestión global del sistema.
   - Entrenador: Creación de planes personalizados.
-  - Usuario: Gestión de entrenamientos individuales.
+  - Usuario: Visualización de los entrenamientos propuestos y añadir observaciones.
 
 ### - Funcionalidades claves:
   - Creación de rutinas personalizadas.
