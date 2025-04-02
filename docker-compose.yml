@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # Base de datos PostgreSQL
+  db:
+    image: postgres:15
+    container_name: stronova-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: stronovauser
+      POSTGRES_PASSWORD: stronovapass
+      POSTGRES_DB: stronovadb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - gym-network
+
+  # API con FastAPI
+  backend:
+    build: ./backend
+    container_name: gym-fastapi
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://gymuser:gympass@db:5432/gymdb
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+    networks:
+      - gym-network
+
+  # Frontend Angular
+  frontend:
+    build: ./frontend
+    container_name: gym-angular
+    restart: always
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - gym-network
+
+networks:
+  gym-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
