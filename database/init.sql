@@ -42,4 +42,13 @@ CREATE TABLE IF NO EXISTS rutina_ejercicio (
     id INT AUTO_INCREMENT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES rutinas(id),
     FOREIGN KEY (id) REFERENCES ejercicios(id)
-)
+);
+
+INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, password, genero, altura, peso_inicial, lesiones, objetivo, rol)
+VALUES ('admin', 'admin', '01/01/2000', 'admin@ejemplo.com', '123456', 'Masculino', 1.80, 80, 'Ninguna', 'Administrar', 'Administrador');
+
+INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, password, genero, altura, peso_inicial, lesiones, objetivo, rol)
+VALUES ('Carmen', 'Perez', '18/10/1998', 'carmen@ejemplo.com', '123456', 'Femenino', 1.60, 60, 'Ninguna', 'Perder peso', 'Cliente');
+
+INSERT INTO usuarios (nombre, apellidos, fecha_nacimiento, email, password, genero, altura, peso_inicial, lesiones, objetivo, rol)
+VALUES ('David', 'García', '15/03/1988', 'davidentrenador@ejemplo.com' '123456', 'Masculino', 1.80, 80, 'Ninguna', 'Hacer mejor la vida de los demás', 'Entrenador');
