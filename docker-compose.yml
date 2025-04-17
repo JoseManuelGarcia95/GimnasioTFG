@@ -26,7 +26,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://gymuser:gympass@db:5432/gymdb
+      - DATABASE_URL=postgresql://stronovauser:stronovapass@db:5432/stronovadb
     depends_on:
       - db
     volumes:
